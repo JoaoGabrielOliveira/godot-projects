@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://wh7e1fxsdelv"]
+
+[ext_resource type="Script" path="res://character.gd" id="1_x70ar"]
+[ext_resource type="SpriteFrames" uid="uid://mth6b2se2qxh" path="res://Sprites/AnimationData/narutoFrame.tres" id="2_jvpr7"]
+[ext_resource type="Script" path="res://animation_handler.gd" id="3_k81eb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enil1"]
+size = Vector2(52, 55)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(609, 342)
+script = ExtResource("1_x70ar")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3, 0)
+sprite_frames = ExtResource("2_jvpr7")
+animation = &"running"
+frame_progress = 0.685943
+script = ExtResource("3_k81eb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_enil1")
