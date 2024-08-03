@@ -1,7 +1,11 @@
 extends Node2D
 
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-var state = StateMachine.State.STANDING
+@export
+var anim: AnimatedSprite2D
+
+@onready
+var state_machine = $StateMachine
+
 var velocity: Vector2 = Vector2.ONE
 
 # Called when the node enters the scene tree for the first time.
@@ -20,8 +24,6 @@ func _input(event):
 	if event is InputEventKey and event.is_pressed():
 		match event.keycode:
 			KEY_A, KEY_D:
-				state = StateMachine.State.RUNNING
-			_:
-				state = StateMachine.State.STANDING
+				state_machine.change_state("RunState")
 	elif  event is InputEventKey and event.is_released():
-		state = StateMachine.State.STANDING
+		state_machine.change_state("StandState")
