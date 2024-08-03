@@ -9,6 +9,8 @@ var initial_state: State
 var states_list: Dictionary
 var current: State
 
+signal change_state_signal
+
 func _ready():
 	set_states()
 	if initial_state:
@@ -31,7 +33,9 @@ func change_state(new_state_name: String):
 	
 	if new_state == current:
 		return
-		
+	
+	change_state_signal.emit(current.name, new_state_name)
+	
 	if current:
 		current._exit()
 		
