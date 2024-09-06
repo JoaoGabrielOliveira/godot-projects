@@ -1,16 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://dkgk2yp3e07cl"]
 
 [ext_resource type="Texture2D" uid="uid://d0gvt1j7auugp" path="res://icon.svg" id="1_3n7f4"]
-[ext_resource type="Script" path="res://Resource/InteractableObject.gd" id="1_rxa4t"]
+[ext_resource type="Script" path="res://Script/InteractableObject.gd" id="1_emegm"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5jfh8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcj7v"]
 
 [node name="Object" type="RigidBody2D"]
+input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_5jfh8")
 freeze_mode = 1
-script = ExtResource("1_rxa4t")
+script = ExtResource("1_emegm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dcj7v")

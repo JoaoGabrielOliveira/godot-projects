@@ -23,28 +23,30 @@ camera_attributes = SubResource("CameraAttributesPractical_5rvy6")
 
 [node name="Object" parent="Actors" instance=ExtResource("1_7flvh")]
 modulate = Color(0.673737, 0.0390005, 0.935883, 1)
-position = Vector2(125, 75)
+position = Vector2(72, 75)
 scale = Vector2(4.405, 4.092)
-inertia = 1.0
+gravity_scale = 0.209
 
 [node name="Object2" parent="Actors" instance=ExtResource("1_7flvh")]
 position = Vector2(295, 127)
 scale = Vector2(4.245, 3.944)
+gravity_scale = 0.209
 inertia = 1.0
 
 [node name="Object3" parent="Actors" instance=ExtResource("1_7flvh")]
 position = Vector2(262, 61)
 scale = Vector2(3.115, 2.894)
+gravity_scale = 0.209
 inertia = 1.0
 
 [node name="Object4" parent="Actors" instance=ExtResource("1_7flvh")]
 position = Vector2(134, 201)
 scale = Vector2(5.03, 4.673)
+gravity_scale = 0.209
 inertia = 1.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Actors"]
 position = Vector2(371, 568)
-rotation = 0.0181744
 scale = Vector2(33.96, 1)
 physics_material_override = SubResource("PhysicsMaterial_b144i")
 
