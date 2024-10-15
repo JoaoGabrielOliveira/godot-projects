@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsojjm54o851u"]
+
+[ext_resource type="Script" path="res://Script/Object.gd" id="1_47if8"]
+[ext_resource type="Texture2D" uid="uid://detg5ah4t7p0k" path="res://icon.svg" id="2_qm5rt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_01h08"]
+
+[node name="Object" type="RigidBody2D"]
+input_pickable = true
+script = ExtResource("1_47if8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_01h08")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("2_qm5rt")

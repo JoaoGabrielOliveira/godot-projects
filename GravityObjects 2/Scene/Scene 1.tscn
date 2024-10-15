@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://3m7uass4qcuj"]
+
+[ext_resource type="PackedScene" uid="uid://bsojjm54o851u" path="res://Resources/Object.tscn" id="1_orvx1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gtrtt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gajee"]
+
+[node name="World" type="Node2D"]
+
+[node name="Object" parent="." instance=ExtResource("1_orvx1")]
+position = Vector2(259, 70)
+linear_damp = 3.061
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(357, 370)
+scale = Vector2(33.88, 1)
+physics_material_override = SubResource("PhysicsMaterial_gtrtt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_gajee")
