@@ -7,6 +7,9 @@
 
 [node name="Object" type="RigidBody2D"]
 input_pickable = true
+mass = 4.16
+max_contacts_reported = 3
+contact_monitor = true
 script = ExtResource("1_47if8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -15,3 +18,5 @@ shape = SubResource("CircleShape2D_01h08")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_qm5rt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

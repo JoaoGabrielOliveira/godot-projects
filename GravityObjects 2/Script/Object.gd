@@ -5,6 +5,7 @@ var hovering = false
 var direction = Vector2.ZERO
 var last_linear
 
+
 func _mouse_enter():
 	hovering = true
 	
@@ -18,14 +19,23 @@ func _input(event):
 	
 func _physics_process(delta):
 	_apply_physics()
-	pass
 
 func _apply_physics():
 	if last_linear != linear_velocity:
 		last_linear = linear_velocity
-		print(last_linear)
 
 	if dragging:
-		
-		direction = (get_global_mouse_position() - global_transform.origin).normalized()
-		apply_central_impulse(direction * 50)
+		var distance:float = global_transform.origin.distance_to(get_global_mouse_position())
+		if distance > 150:
+			dragging = false
+		else:
+			print(round(distance))
+			direction = (get_global_mouse_position() - global_transform.origin).normalized()
+			apply_central_impulse(((direction) * 5 * distance) / mass)
+
+func _on_body_entered(body):
+	print(last_linear)
+	if abs(last_linear.x) > 50 || abs(last_linear.y) > 50:
+		print("Break")
+	elif abs(last_linear.x) > 10 || abs(last_linear.y) > 10:
+		print("Crack")
