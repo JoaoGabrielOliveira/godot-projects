@@ -7,12 +7,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gajee"]
 
 [sub_resource type="Environment" id="Environment_r0s6s"]
+background_mode = 3
+glow_enabled = true
 
 [node name="World" type="Node2D"]
 
 [node name="Object" parent="." instance=ExtResource("1_orvx1")]
 position = Vector2(259, 70)
-mass = 5.0
 linear_damp = 3.061
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

@@ -1,22 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsojjm54o851u"]
+[gd_scene load_steps=5 format=3 uid="uid://bsojjm54o851u"]
 
 [ext_resource type="Script" path="res://Script/Object.gd" id="1_47if8"]
 [ext_resource type="Texture2D" uid="uid://detg5ah4t7p0k" path="res://icon.svg" id="2_qm5rt"]
+[ext_resource type="Script" path="res://Script/ObjectSprite.gd" id="3_p8hfk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_01h08"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ll1ie"]
+height = 28.0
 
 [node name="Object" type="RigidBody2D"]
 input_pickable = true
-mass = 4.16
 max_contacts_reported = 3
 contact_monitor = true
 script = ExtResource("1_47if8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_01h08")
+shape = SubResource("CapsuleShape2D_ll1ie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.849991, 0.526474, 0.993421, 1)
 scale = Vector2(0.11, 0.11)
 texture = ExtResource("2_qm5rt")
+script = ExtResource("3_p8hfk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="on_drag" from="." to="Sprite2D" method="_on_object_on_drag"]
+[connection signal="on_hover" from="." to="Sprite2D" method="_on_object_on_hover"]
