@@ -1,14 +1,15 @@
+extends RigidBody2D
 class_name GravityObject
-extends Node
+
 
 #region Public
-@export var mass: float
 @export var sprite: Sprite2D
-@export var rigidbody2d: RigidBody2D
 #endregion
 
 #region Privete
 var direction : Vector2
+var is_dragging : bool
+var is_hovering : bool
 #endregion
 
 #region Events
@@ -19,7 +20,16 @@ signal breaking
 signal do_action
 #endregion
 
-func _ready():
-	pass
 func _process(delta):
-	pass
+	if (is_hovering):
+		sprite.self_modulate = Color.AQUA
+	else:
+		sprite.self_modulate = Color.WHITE
+
+func _mouse_enter():
+	if(!is_hovering):
+		hovering.emit(true)
+	is_hovering = true	
+func _mouse_exit():
+	is_hovering = false
+	hovering.emit(false)

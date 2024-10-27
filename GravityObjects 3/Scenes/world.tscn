@@ -1,24 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0xvcatu1jsev"]
+[gd_scene load_steps=6 format=3 uid="uid://d0xvcatu1jsev"]
 
-[ext_resource type="PackedScene" uid="uid://b4ybjexpg5tkf" path="res://Resource/GravityObject.tscn" id="1_rf3ap"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0ey8p"]
+[ext_resource type="PackedScene" uid="uid://b5k22pucquknw" path="res://Resource/GravityObject.tscn" id="1_rf3ap"]
+[ext_resource type="Texture2D" uid="uid://c0rjw80t4ylym" path="res://icon.svg" id="2_6okfb"]
+[ext_resource type="PackedScene" uid="uid://c0vcwyfgmvajo" path="res://Resource/Egg.tscn" id="2_il0fw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqjn"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ad81q"]
+
 [node name="World" type="Node2D"]
-
-[node name="Gravity Object" parent="." node_paths=PackedStringArray("sprite", "rigidbody2d") instance=ExtResource("1_rf3ap")]
-position = Vector2(107, 22)
-sprite = NodePath("SpriteComponent")
-rigidbody2d = NodePath("RigidBodyComponent")
-
-[node name="RigidBodyComponent" type="RigidBody2D" parent="Gravity Object"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity Object/RigidBodyComponent"]
-shape = SubResource("CircleShape2D_0ey8p")
-
-[node name="SpriteComponent" type="Sprite2D" parent="Gravity Object"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(183, 114)
@@ -27,3 +17,18 @@ scale = Vector2(16.2, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_oeqjn")
+
+[node name="GravityObject" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_rf3ap")]
+position = Vector2(52, 0)
+input_pickable = true
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityObject"]
+shape = SubResource("CircleShape2D_ad81q")
+
+[node name="Sprite2D" type="Sprite2D" parent="GravityObject"]
+scale = Vector2(0.115, 0.115)
+texture = ExtResource("2_6okfb")
+
+[node name="Egg" parent="." instance=ExtResource("2_il0fw")]
+position = Vector2(62, -68)
