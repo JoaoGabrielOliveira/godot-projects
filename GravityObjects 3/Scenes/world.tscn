@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0xvcatu1jsev"]
+
+[ext_resource type="PackedScene" uid="uid://b4ybjexpg5tkf" path="res://Resource/gravity_object.tscn" id="1_rf3ap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ey8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqjn"]
+
+[node name="World" type="Node2D"]
+
+[node name="Gravity Object" parent="." node_paths=PackedStringArray("sprite", "rigidbody2d") instance=ExtResource("1_rf3ap")]
+position = Vector2(107, 22)
+sprite = NodePath("SpriteComponent")
+rigidbody2d = NodePath("RigidBodyComponent")
+
+[node name="RigidBodyComponent" type="RigidBody2D" parent="Gravity Object"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity Object/RigidBodyComponent"]
+shape = SubResource("CircleShape2D_0ey8p")
+
+[node name="SpriteComponent" type="Sprite2D" parent="Gravity Object"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(183, 114)
+rotation = 0.017631
+scale = Vector2(16.2, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_oeqjn")

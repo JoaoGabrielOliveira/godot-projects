@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4ybjexpg5tkf"]
+
+[ext_resource type="Script" path="res://Scripts/Class/GravityObject.gd" id="1_bml25"]
+
+[node name="Gravity Object" type="Node2D" node_paths=PackedStringArray("sprite", "rigidbody2d")]
+script = ExtResource("1_bml25")
+sprite = NodePath("")
+rigidbody2d = NodePath("")
