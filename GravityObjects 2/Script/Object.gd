@@ -10,7 +10,7 @@ var direction = Vector2.ZERO
 
 var last_linear
 
-@export var test : String = ""
+@export_range(0, 30) var Strength : float = 5.00
 
 
 func _mouse_enter():
@@ -26,8 +26,9 @@ func _mouse_exit():
 func _input(event):
 	if event is InputEventMouseButton:
 		if (hovering && event.is_pressed()):
-			dragging = true
-			on_drag.emit(true)
+			if event.button_index == MOUSE_BUTTON_RIGHT:
+				dragging = true
+				on_drag.emit(true)
 		elif event.is_released():
 			dragging = false
 			on_drag.emit(false)
@@ -48,7 +49,7 @@ func _apply_physics():
 		else:
 			print(round(distance))
 			direction = (get_global_mouse_position() - global_transform.origin)
-			apply_force(((direction) * 5 * distance) / mass)
+			apply_force(((direction) * Strength * distance) / mass)
 			linear_damp = distance
 	else:
 		linear_damp = 3.061

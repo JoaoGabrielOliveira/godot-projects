@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://3m7uass4qcuj"]
+[gd_scene load_steps=6 format=3 uid="uid://3m7uass4qcuj"]
 
 [ext_resource type="PackedScene" uid="uid://bsojjm54o851u" path="res://Resources/Object.tscn" id="1_orvx1"]
+[ext_resource type="Script" path="res://Scene/Camera2D.gd" id="2_k5ywk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gtrtt"]
 
@@ -14,7 +15,9 @@ glow_enabled = true
 
 [node name="Object" parent="." instance=ExtResource("1_orvx1")]
 position = Vector2(259, 70)
+mass = 55.0
 linear_damp = 3.061
+Strength = 10.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(357, 370)
@@ -26,3 +29,9 @@ shape = SubResource("RectangleShape2D_gajee")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r0s6s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(358, 262)
+zoom = Vector2(2.87, 2.87)
+position_smoothing_enabled = true
+script = ExtResource("2_k5ywk")
