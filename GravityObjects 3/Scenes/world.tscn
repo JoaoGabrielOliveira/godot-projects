@@ -10,12 +10,19 @@ script = ExtResource("1_dyfyc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(183, 114)
-rotation = 0.017631
-scale = Vector2(16.2, 1)
+rotation = -0.000149369
+scale = Vector2(42.48, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_oeqjn")
 
 [node name="Egg" parent="." instance=ExtResource("2_il0fw")]
-position = Vector2(36, -68)
-mass = 5.26
+position = Vector2(182, -68)
+
+[node name="Egg2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_il0fw")]
+position = Vector2(364, -136)
+sprite = NodePath("../Egg/Sprite2D")
+
+[node name="Egg3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_il0fw")]
+position = Vector2(340, -171)
+sprite = NodePath("../Egg/Sprite2D")
