@@ -1,28 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0xvcatu1jsev"]
 
 [ext_resource type="Script" path="res://Scripts/Director.gd" id="1_dyfyc"]
-[ext_resource type="PackedScene" uid="uid://c0vcwyfgmvajo" path="res://Resource/Egg.tscn" id="2_il0fw"]
+[ext_resource type="PackedScene" uid="uid://bkjcs6kuxisdk" path="res://Resource/Egg.tscn" id="2_tpafd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqjn"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_dyfyc")
 
+[node name="Egg" parent="." instance=ExtResource("2_tpafd")]
+position = Vector2(291, 126)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(183, 114)
+position = Vector2(580, 581)
 rotation = -0.000149369
 scale = Vector2(42.48, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_oeqjn")
-
-[node name="Egg" parent="." instance=ExtResource("2_il0fw")]
-position = Vector2(182, -68)
-
-[node name="Egg2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_il0fw")]
-position = Vector2(364, -136)
-sprite = NodePath("../Egg/Sprite2D")
-
-[node name="Egg3" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_il0fw")]
-position = Vector2(340, -171)
-sprite = NodePath("../Egg/Sprite2D")

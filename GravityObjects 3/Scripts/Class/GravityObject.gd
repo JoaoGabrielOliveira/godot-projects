@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name GravityObject
 
 #region Public
-@export var sprite: Sprite2D
+var sprite: Sprite2D
 #endregion
 
 #region Privete
@@ -24,20 +24,16 @@ signal do_action
 
 
 func _ready():
+	sprite = get_node("Sprite")
+	resize()
 	_connect_signals()
 
 func _process(delta):
-	if (is_hovering && is_dragging):
-		sprite.self_modulate = Color.DARK_RED
-	elif (is_hovering):
-		sprite.self_modulate = Color.AQUA
-	else:
-		sprite.self_modulate = Color.WHITE
+	change_color_by_event()
 
 func _physics_process(delta):
 	if is_dragging:
 		_apply_physics()
-
 
 func _apply_physics():
 	if last_linear_velocity != linear_velocity:
@@ -68,3 +64,16 @@ func _on_object_is_hovered(hover:bool):
 	is_hovering = hover
 	Director.hovered_object = self
 	print_debug("Hovering: ", hover)
+
+func change_color_by_event():
+	if (is_hovering && is_dragging):
+		sprite.self_modulate = Color.DARK_RED
+	elif (is_hovering):
+		sprite.self_modulate = Color.AQUA
+	else:
+		sprite.self_modulate = Color.WHITE
+		
+func resize():
+	for component in get_children():
+		if component is Node2D:
+			component.scale = self.scale
